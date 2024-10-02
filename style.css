@@ -11,6 +11,52 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Animations */
+
+@keyframes animate-profile-picture {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animate-wave {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
 /*  General */
 
 h1,
@@ -31,31 +77,39 @@ p {
 }
 
 a {
-    text-decoration: none;
-    position: relative;
+  text-decoration: none;
+  position: relative;
+}
+
+i {
+  transition: all 300ms ease-in-out;
+}
+
+i:hover {
+  opacity: 0.7;
 }
 
 .link__hover--effect:after {
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 0;
-    bottom: -3px;
-    right: 0;
-    transition: all 300ms ease;
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 0;
+  bottom: -3px;
+  right: 0;
+  transition: all 300ms ease;
 }
 
 .link__hover--effect--white:after {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .link__hover--effect--black:after {
-    background-color: #000;
+  background-color: #000;
 }
 
 .link__hover--effect:hover:after {
-    width: 100%;
-    left: 0;
+  width: 100%;
+  left: 0;
   transition: all 300ms ease;
 }
 
@@ -122,12 +176,13 @@ nav {
   padding: 8px 20px;
   border-radius: 50px;
   color: white;
-  transition: all 300ms ease;
+  transition: all 300ms ease-in-out;
 }
 
 .nav__link--anchor--primary:hover {
   background-color: #5d3eff;
 }
+
 
 .personal__logo {
   font-size: 24px;
@@ -165,6 +220,8 @@ nav {
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
   margin-bottom: 28px;
+
+  animation: animate-profile-picture 800ms 200ms backwards ease-in-out;
 }
 
 .about-me_picture {
@@ -182,18 +239,21 @@ nav {
 
 .about-me__info--title {
   margin-bottom: 16px;
+  animation: fade-up 650ms 200ms backwards ease;
 }
 
 .about-me__info--para {
   text-align: center;
   font-size: 20px;
   margin-bottom: 28px;
+  animation: fade-up 650ms 100ms backwards ease;
 }
 
 .about-me__links {
   font-size: 20px;
   color: black;
   padding: 0 16px;
+  animation: fade-up 650ms 500ms backwards ease;
 }
 
 .about-me__img--container {
@@ -205,6 +265,12 @@ nav {
 .about-me__img {
   width: 100%;
   margin-top: 24px;
+  animation: fade-in 1200ms 800ms backwards ease;
+}
+
+.project__description--title__emoji {
+  display: inline-block;
+  animation: animate-wave 500ms infinite ease-in-out;
 }
 
 /* Tech- Stack*/
@@ -398,65 +464,76 @@ footer {
 
 Used for;: Small phones, tablets, and large smart phones.*/
 
-
 @media (max-width: 768px) {
+  nav {
+    height: 68px;
+  }
 
-nav {
-height: 68px;
-}
-
-h1 {
+  h1 {
     font-size: 28px;
-}
+  }
 
-.about-me__info--para {
+  .about-me__info--para {
     font-size: 18px;
-}
+  }
 
-.language {
+  .language {
     width: calc(100% / 3);
-}
+  }
 
-.project__description {
+  .project__description {
     font-size: 14px;
     left: 30px;
     padding-right: 30px;
-}
-
+  }
 }
 
 /* SMALL PHONES   */
 
 @media (max-width: 480px) {
-
-.nav__link:not(:last-child) {
-display: none;
-}
-.project__description {
+  .nav__link:not(:last-child) {
+    display: none;
+  }
+  .project__description {
     padding: 0;
     left: 0;
     width: 100%;
+  }
 
-}
-
-.project__description--para {
+  .project__description--para {
     display: none;
-}
+  }
 
-.project_description--links {
+  .project_description--links {
     display: flex;
     justify-content: center;
-}
+  }
 
-.project__description--title {
+  .project__description--title {
     font-size: 32px;
     line-height: 1;
     text-align: center;
-}
+  }
 
-.project__description--sub-title {
+  .project__description--sub-title {
     text-align: center;
-    margin: 12px;
-}
+    margin: 12px 0;
+  }
 
+  .project__wrapper {
+    margin: -50px 0;
+  }
+
+  .section__title {
+    padding-bottom: 24px;
+  }
+
+  .about-me__info--para {
+    font-size: 12px;
+  }
+
+  .section__title {
+    padding-bottom: 0;
+    margin-bottom: 12px;
+  }
 }
